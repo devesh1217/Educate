@@ -73,6 +73,7 @@ const userRoute = {
                     res.status(200).json({ isValid: false });
                 }
             }).catch((err) => {
+                console.log(err)
                 res.sendStatus(404);
             });
     },

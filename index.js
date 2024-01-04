@@ -1,6 +1,4 @@
-import { google } from "googleapis";
 import 'fs';
-import credentials from './apiKeys.json' with { type: "json" };
 import express from 'express';
 import cors from 'cors';
 
@@ -13,19 +11,19 @@ const port = 8080;
 
 
 const main = async () => {
-    await mongoose.connect('mongodb://localhost:27017/gwoc');
+    await mongoose.connect('mongodb+srv://u22cs035:abcd@cluster0.ffngqxj.mongodb.net/users?retryWrites=true&w=majority');
 }
 
 main()
-.then(()=>{console.log('DB Connected')})
-.catch((err) => { console.log('Error occuered!', err) });
+    .then(() => { console.log('DB Connected') })
+    .catch((err) => { console.log('Error occuered!', err) });
 
 
 server.use(cors());
 server.use(express.json());
 server.use(express.static('public'));
-server.use('/user',userRouter);
-server.use('/data',dataRouter);
+server.use('/user', userRouter);
+server.use('/data', dataRouter);
 
 
 
@@ -49,10 +47,10 @@ server.get('/api', async (req, res) => {
 server.get('/data/:id', async (req, res) => {
     const folderId = req.params.id;
 
-    try{
+    try {
         const files = await listFilesInFolder(folderId);
         res.json(files);
-    } catch(err){
+    } catch (err) {
         console.log(err)
         res.sendStatus(500);
     }

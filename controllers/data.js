@@ -144,7 +144,7 @@ const dataRoute = {
 
         const mailOptions = {
             from: 'results.tarangsir@class.in',
-            to: 'u22cs057@coed.svnit.ac.in',
+            to: 'u22cs067@coed.svnit.ac.in',
             subject: 'Test Result of date '+new Date().toLocaleDateString(),
             text: 'Test Result of date '+new Date().toLocaleDateString(),
             html: `<div class="result-box">
