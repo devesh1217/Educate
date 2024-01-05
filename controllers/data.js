@@ -112,7 +112,7 @@ const dataRoute = {
         const correct = [];
         const notMarked = [];
         const inCorrect = [];
-        const phy = 0, chem = 0, maths = 0;
+        let phy = 0, chem = 0, maths = 0;
         let acc=0;
         let userData;
 
