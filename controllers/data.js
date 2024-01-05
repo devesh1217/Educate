@@ -75,24 +75,24 @@ const dataRoute = {
         await listFilesInFolder(folderId)
             .then((doc) => {
                 const ans = {}
-                doc.forEach((curr,indx)=>{
-                    let topicName=curr.name.split('.')[0];
-                    if(ans[topicName]){
-                        if(ans[topicName].pdf){
-                            ans[topicName].video=curr.webViewLink
+                doc.forEach((curr, indx) => {
+                    let topicName = curr.name.split('.')[0];
+                    if (ans[topicName]) {
+                        if (ans[topicName].pdf) {
+                            ans[topicName].video = curr.webViewLink
                         } else {
-                            ans[topicName].pdf=curr.webViewLink
+                            ans[topicName].pdf = curr.webViewLink
                         }
                     } else {
-                        if(curr.mimeType.split('/')[0]=='application'){
-                            ans[topicName]={
-                                name:topicName,
-                                pdf:curr.webViewLink
+                        if (curr.mimeType.split('/')[0] == 'application') {
+                            ans[topicName] = {
+                                name: topicName,
+                                pdf: curr.webViewLink
                             }
                         } else {
-                            ans[topicName]={
-                                name:topicName,
-                                video:curr.webViewLink
+                            ans[topicName] = {
+                                name: topicName,
+                                video: curr.webViewLink
                             }
                         }
                     }
@@ -108,27 +108,45 @@ const dataRoute = {
     testAns: async (req, res) => {
         const ansKey = await getGoogleSheetValues(req.params.id);
         const ans = req.body.ans;
-        const id = req.body.id ;
+        const id = req.body.id;
         const correct = [];
         const notMarked = [];
         const inCorrect = [];
+        const phy = 0, chem = 0, maths = 0;
         let userData;
 
         await userSchema.findOne({ userId: id })
             .then((doc) => {
                 if (doc)
-                    userData=(doc);
+                    userData = (doc);
             }).catch((err) => {
                 console.log(err)
                 res.sendStatus(500);
             });
 
         ans.forEach((curr, indx) => {
+
             if (curr == '') {
+
                 notMarked.push(indx);
             } else if (curr === ansKey[indx]) {
+                if (indx < 25) {
+                    phy += 4;
+                } else if (indx < 50) {
+                    chem += 4;
+                } else {
+                    maths += 4;
+                }
+
                 correct.push(indx);
             } else {
+                if (indx < 25) {
+                    phy -= 1;
+                } else if (indx < 50) {
+                    chem -= 1;
+                } else {
+                    maths -= 1;
+                }
                 inCorrect.push(indx);
             }
         });
@@ -145,33 +163,38 @@ const dataRoute = {
         const mailOptions = {
             from: 'results.tarangsir@class.in',
             to: 'u22cs067@coed.svnit.ac.in',
-            subject: 'Test Result of date '+new Date().toLocaleDateString(),
-            text: 'Test Result of date '+new Date().toLocaleDateString(),
+            subject: 'Test Result of date ' + new Date().toLocaleDateString(),
+            text: 'Test Result of date ' + new Date().toLocaleDateString(),
             html: `<div class="result-box">
             <div style="text-align: center; font-size: 2rem; background-color: rgb(25, 62, 156); color: white; ">
                 Test Result
             </div>
-            <div style="display: flex; justify-content: center; flex-direction: row; align-items: left; font-size: 1.5rem; margin-top: 1rem; gap: 0.5rem; ">
+            <div font-size: 1.2rem; margin-top: 1rem; ">
                 <div>Name:</div>
                 <div>st name : </div>
                 <div>Date : </div>
             </div>
             <hr>
-            <div style="font-size: 1.2rem; margin-top: 2rem;margin-bottom: 2rem; "> 
-                <div style="margin-bottom: 0.7rem;">Total Marks : ${(correct.length)*4-(inCorrect.length)}</div>
+            <div style="font-size: 1.2rem; margin-top: 2rem; margin-bottom: 2rem; "> 
+                <div style="margin-bottom: 0.7rem;">Total Marks : ${(correct.length) * 4 - (inCorrect.length)}</div>
                 <div style="margin-bottom: 0.7rem;">Total Correct : ${(correct.length)}</div>
                 <div style="margin-bottom: 0.7rem;">Total Incorrect : ${(inCorrect.length)}</div>
                 <div style="margin-bottom: 0.7rem;">Total Not Attempted : ${notMarked.length}</div>
+                <div style="margin-bottom: 0.7rem;">Accuracy : ${100*(correct.length)/((correct.length)+(inCorrect.length))}</div>
             </div>
             <hr>
-            <div style="display: flex; justify-content: center; flex-direction: column; align-items: left; font-size: 1.5rem; margin-top: 1rem;margin-bottom: 2rem; gap: 0.5rem; ">
-                <div>Physics : </div>
-                <div>Chemistry : </div>
-                <div>Maths : </div>
-                <div>Accuracy : </div>
+            <div style="font-size: 1.2rem; margin-top: 2rem;margin-bottom: 2rem; "> 
+                <div style="margin-bottom: 0.7rem;">Physics : ${phy}</div>
+                <div style="margin-bottom: 0.7rem;">Chemistry : ${chem}</div>
+                <div style="margin-bottom: 0.7rem;">Maths : ${maths}</div>
             </div>
             <hr>
-    
+            <div>
+                From Tarang Sir
+            </div>
+            <div style="text-align: center; font-size: 2rem; background-color: rgb(25, 62, 156); color: white; ">
+                If you have any doubt
+            </div>
         </div>`
         };
 
@@ -183,13 +206,17 @@ const dataRoute = {
             }
         });
 
-        const update = await userSchema.updateOne({userId:id},{$push:{testData:{id:req.params.id,correct:correct,inCorrect:inCorrect,notMarked:notMarked,date:new Date()}}});
-        
+        const update = await userSchema.updateOne({ userId: id }, { $push: { testData: { id: req.params.id, correct: correct, inCorrect: inCorrect, notMarked: notMarked, date: new Date() } } });
+
 
         res.json({
             correct,
             inCorrect,
-            notMarked
+            notMarked,
+            phy,
+            chem,
+            maths,
+            accuracy:100*(correct.length)/((correct.length)+(inCorrect.length))
         });
     },
 
