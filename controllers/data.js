@@ -169,7 +169,7 @@ const dataRoute = {
             <div style="text-align: center; font-size: 2rem; background-color: rgb(25, 62, 156); color: white; ">
                 Test Result
             </div>
-            <div font-size: 1.2rem; margin-top: 1rem; ">
+            <div style="font-size: 1.2rem; margin-top: 2rem; margin-bottom: 2rem; ">
                 <div>Name:</div>
                 <div>st name : </div>
                 <div>Date : </div>
@@ -190,10 +190,11 @@ const dataRoute = {
             </div>
             <hr>
             <div>
-                From Tarang Sir
+            From Tarang Sir
             </div>
+            <hr>
             <div style="text-align: center; font-size: 2rem; background-color: rgb(25, 62, 156); color: white; ">
-                If you have any doubt
+                If you have any doubt then please contact Tarang Sir.
             </div>
         </div>`
         };
@@ -206,7 +207,23 @@ const dataRoute = {
             }
         });
 
-        const update = await userSchema.updateOne({ userId: id }, { $push: { testData: { id: req.params.id, correct: correct, inCorrect: inCorrect, notMarked: notMarked, date: new Date() } } });
+        const update = await userSchema.updateOne(
+            { userId: id },
+            { 
+                $push: { 
+                    testData: { 
+                        id: req.params.id,
+                        correct: correct,
+                        inCorrect: inCorrect,
+                        notMarked: notMarked,
+                        phy,
+                        chem,
+                        maths,
+                        date: new Date()
+                    }
+                }
+            }
+        );
 
 
         res.json({
