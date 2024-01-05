@@ -194,7 +194,7 @@ const dataRoute = {
             From Tarang Sir
             </div>
             <hr>
-            <div style="text-align: center; font-size: 2rem; background-color: rgb(25, 62, 156); color: white; ">
+            <div style="text-align: center; font-size: 0.9rem; background-color: rgb(25, 62, 156); color: gray; padding 5px">
                 If you have any doubt then please contact Tarang Sir.
             </div>
         </div>`
