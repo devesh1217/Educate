@@ -131,9 +131,9 @@ const dataRoute = {
 
                 notMarked.push(indx);
             } else if (curr === ansKey[indx]) {
-                if (indx < 25) {
+                if (indx < 2) {
                     phy += 4;
-                } else if (indx < 50) {
+                } else if (indx < 4) {
                     chem += 4;
                 } else {
                     maths += 4;
@@ -141,9 +141,9 @@ const dataRoute = {
 
                 correct.push(indx);
             } else {
-                if (indx < 25) {
+                if (indx < 2) {
                     phy -= 1;
-                } else if (indx < 50) {
+                } else if (indx < 4) {
                     chem -= 1;
                 } else {
                     maths -= 1;
