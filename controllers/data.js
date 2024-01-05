@@ -113,6 +113,7 @@ const dataRoute = {
         const notMarked = [];
         const inCorrect = [];
         const phy = 0, chem = 0, maths = 0;
+        let acc=0;
         let userData;
 
         await userSchema.findOne({ userId: id })
@@ -159,13 +160,13 @@ const dataRoute = {
                 pass: 'pkjncigmlpcxlurv',       // Replace with your Gmail password or use an server password
             },
         });
-
+        acc=100*(correct.length)/((correct.length)+(inCorrect.length));
         const mailOptions = {
             from: 'results.tarangsir@class.in',
             to: 'u22cs067@coed.svnit.ac.in',
             subject: 'Test Result of date ' + new Date().toLocaleDateString(),
             text: 'Test Result of date ' + new Date().toLocaleDateString(),
-            html: `<div class="result-box">
+            html: `<div class="result-box" style="font-family:Verdana, Geneva, Tahoma, sans-serif">
             <div style="text-align: center; font-size: 2rem; background-color: rgb(25, 62, 156); color: white; ">
                 Test Result
             </div>
@@ -180,7 +181,7 @@ const dataRoute = {
                 <div style="margin-bottom: 0.7rem;">Total Correct : ${(correct.length)}</div>
                 <div style="margin-bottom: 0.7rem;">Total Incorrect : ${(inCorrect.length)}</div>
                 <div style="margin-bottom: 0.7rem;">Total Not Attempted : ${notMarked.length}</div>
-                <div style="margin-bottom: 0.7rem;">Accuracy : ${100*(correct.length)/((correct.length)+(inCorrect.length))}</div>
+                <div style="margin-bottom: 0.7rem;">Accuracy : ${(acc)?acc:0}</div>
             </div>
             <hr>
             <div style="font-size: 1.2rem; margin-top: 2rem;margin-bottom: 2rem; "> 
@@ -219,6 +220,7 @@ const dataRoute = {
                         phy,
                         chem,
                         maths,
+                        acc:100*(correct.length)/((correct.length)+(inCorrect.length)),
                         date: new Date()
                     }
                 }
@@ -233,7 +235,7 @@ const dataRoute = {
             phy,
             chem,
             maths,
-            accuracy:100*(correct.length)/((correct.length)+(inCorrect.length))
+            acc:100*(correct.length)/((correct.length)+(inCorrect.length))
         });
     },
 
