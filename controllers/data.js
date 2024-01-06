@@ -48,11 +48,12 @@ async function getGoogleSheetValues(id) {
 
         const response = await sheets.spreadsheets.values.get({
             spreadsheetId,
-            range: 'Sheet1!A1:Z10',
+            range: 'Sheet1!A1:A75',
         });
 
-        const values = response.data.values;
-        return values[0];
+        const values = response.data.values.map((curr)=>curr[0]);
+
+        return values;
     } catch (error) {
         console.error('Error accessing Google Sheet:', error.message);
     }
@@ -104,7 +105,6 @@ const dataRoute = {
             });
 
     },
-
     
     testAns: async (req, res) => {
         const ansKey = await getGoogleSheetValues(req.params.id);
@@ -201,13 +201,13 @@ const dataRoute = {
         </div>`
         };
 
-        transporter.sendMail(mailOptions, (error, info) => {
-            if (error) {
-                console.error('Error sending email:', error);
-            } else {
-                console.log('Email sent:', info.response);
-            }
-        });
+        // transporter.sendMail(mailOptions, (error, info) => {
+        //     if (error) {
+        //         console.error('Error sending email:', error);
+        //     } else {
+        //         console.log('Email sent:', info.response);
+        //     }
+        // });
 
         const update = await userSchema.updateOne(
             { userId: id },
