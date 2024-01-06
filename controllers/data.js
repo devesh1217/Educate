@@ -201,13 +201,13 @@ const dataRoute = {
         </div>`
         };
 
-        // transporter.sendMail(mailOptions, (error, info) => {
-        //     if (error) {
-        //         console.error('Error sending email:', error);
-        //     } else {
-        //         console.log('Email sent:', info.response);
-        //     }
-        // });
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.error('Error sending email:', error);
+            } else {
+                console.log('Email sent:', info.response);
+            }
+        });
 
         const update = await userSchema.updateOne(
             { userId: id },
