@@ -132,9 +132,9 @@ const dataRoute = {
 
                 notMarked.push(indx);
             } else if (curr === ansKey[indx]) {
-                if (indx < 2) {
+                if (indx < 25) {
                     phy += 4;
-                } else if (indx < 4) {
+                } else if (indx < 50) {
                     chem += 4;
                 } else {
                     maths += 4;
@@ -142,9 +142,9 @@ const dataRoute = {
 
                 correct.push(indx);
             } else {
-                if (indx < 2) {
+                if (indx < 25) {
                     phy -= 1;
-                } else if (indx < 4) {
+                } else if (indx < 50) {
                     chem -= 1;
                 } else {
                     maths -= 1;
@@ -201,13 +201,13 @@ const dataRoute = {
         </div>`
         };
 
-        // transporter.sendMail(mailOptions, (error, info) => {
-        //     if (error) {
-        //         console.error('Error sending email:', error);
-        //     } else {
-        //         console.log('Email sent:', info.response);
-        //     }
-        // });
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.error('Error sending email:', error);
+            } else {
+                console.log('Email sent:', info.response);
+            }
+        });
 
         const update = await userSchema.updateOne(
             { userId: id },
