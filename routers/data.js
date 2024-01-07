@@ -6,6 +6,8 @@ const dataRouter = express.Router();
 dataRouter
     .get('/:id',data.get)
     .get('/get/:id',data.getLec)
+    .post('/get/test/:id',data.getTestData)
+    .post('/get/result/',data.getResult)
     .post('/testAns/:id',data.testAns)
 
 export default dataRouter;

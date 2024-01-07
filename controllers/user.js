@@ -60,7 +60,6 @@ const userRoute = {
     login: async (req, res) => {
         const id = req.body.id;
         const pswd = req.body.pswd;
-        console.log(id,pswd)
         await userSchema.findOne({ userId: id })
             .then((doc) => {
                 if (doc) {
@@ -71,6 +70,34 @@ const userRoute = {
                     }
                 } else {
                     res.status(200).json({ isValid: false });
+                }
+            }).catch((err) => {
+                console.log(err)
+                res.sendStatus(404);
+            });
+    },
+    getOne: async (req, res) => {
+        const id = req.params.id;
+        await userSchema.findOne({ userId: id },{userId:1,userName:1,email:1,mobile:1,testData:1})
+            .then((doc) => {
+                if (doc) {
+                    res.status(200).json(doc);
+                } else {
+                    res.status(200).json({});
+                }
+            }).catch((err) => {
+                console.log(err)
+                res.sendStatus(404);
+            });
+    },
+    getName: async (req, res) => {
+        const id = req.params.id;
+        await userSchema.findOne({ userId: id },{userId:1,userName:1,_id:0})
+            .then((doc) => {
+                if (doc) {
+                    res.status(200).json(doc);
+                } else {
+                    res.status(200).json({});
                 }
             }).catch((err) => {
                 console.log(err)

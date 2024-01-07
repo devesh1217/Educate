@@ -71,6 +71,29 @@ const dataRoute = {
             });
 
     },
+    getTestData: async (req, res) => {
+        const id = req.body.id;
+        const folderId = req.params.id;
+        let appearedTest,testData;
+        try{
+            appearedTest = await userSchema.findOne({ userId: id },{testData:1});
+            testData = await listFilesInFolder(folderId);
+        } catch(err){
+            console.log(err)
+        }   
+        const ans = testData.filter(test => !appearedTest.testData.some(userTest => userTest.id === test.id));
+        res.json(ans)
+    },
+    getResult: async (req, res) => {
+        const id = req.body.id;
+        let appearedTest;
+        try{
+            appearedTest = await userSchema.findOne({ userId: id },{testData:1});
+        } catch(err){
+            console.log(err)
+        }   
+        res.json(appearedTest.testData)
+    },
     getLec: async (req, res) => {
         const folderId = req.params.id;
         await listFilesInFolder(folderId)
