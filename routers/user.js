@@ -5,6 +5,7 @@ const userRouter = express.Router();
 
 userRouter
     .post('/',user.create)
+    .get('/admin/',user.admin)
     .get('/get/:id',user.getOne)
     .get('/name/:id',user.getName)
     .post('/login',user.login)

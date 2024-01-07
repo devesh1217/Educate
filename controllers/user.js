@@ -76,6 +76,20 @@ const userRoute = {
                 res.sendStatus(404);
             });
     },
+    admin: async (req, res) => {
+        const id = req.params.id;
+        await userSchema.find({ paymentDone: {$eq:true} })
+            .then((doc) => {
+                if (doc) {
+                    res.status(200).json(doc);
+                } else {
+                    res.status(200).json({});
+                }
+            }).catch((err) => {
+                console.log(err)
+                res.sendStatus(404);
+            });
+    },
     getOne: async (req, res) => {
         const id = req.params.id;
         await userSchema.findOne({ userId: id },{userId:1,userName:1,email:1,mobile:1,testData:1})
