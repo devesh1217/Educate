@@ -1,5 +1,6 @@
 import userSchema from '../model/user.js'
 import nodemailer from 'nodemailer';
+import bcryptjs from 'bcryptjs'
 
 const userRoute = {
     otp: async (req, res)=>{
@@ -42,9 +43,6 @@ const userRoute = {
                 res.sendStatus(500);
             });
 
-        
-
-
         if (c !== null) {
             data.userId = new Date().getFullYear() + String(c + 1).padStart(4, '0');
             data.password = data.userName.substring(0, 4).toUpperCase() + String(data.registrationDate.getDate()).padStart(2, '0') + String(data.registrationDate.getMonth() + 1).padStart(2, '0');
@@ -63,7 +61,7 @@ const userRoute = {
         await userSchema.findOne({ userId: id })
             .then((doc) => {
                 if (doc) {
-                    if (doc.userId == id && doc.password == pswd) {
+                    if (doc.userId == id && bcryptjs.compare(pswd,doc.password)) {
                         res.status(200).json({ isValid: true });
                     } else {
                         res.status(200).json({ isValid: false });
