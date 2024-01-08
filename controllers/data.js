@@ -82,8 +82,8 @@ const dataRoute = {
             console.log(err)
         }
         if(appearedTest){
-            console.log(ans)
             const ans = testData.filter(test => !appearedTest.testData.some(userTest => userTest.id === test.id));
+            console.log(ans)
             res.status(200).json(ans);
         }else {
             res.status(200).json(testData);
