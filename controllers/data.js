@@ -81,8 +81,12 @@ const dataRoute = {
         } catch(err){
             console.log(err)
         }
-        const ans = testData.filter(test => !appearedTest.testData.some(userTest => userTest.id === test.id));
-        res.status(200).json(ans);
+        if(appearedTest){
+            const ans = testData.filter(test => !appearedTest.testData.some(userTest => userTest.id === test.id));
+            res.status(200).json(ans);
+        }else {
+            res.status(200).json(testData);
+        }
     },
     getResult: async (req, res) => {
         const id = req.body.id;
