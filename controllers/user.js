@@ -45,7 +45,7 @@ const userRoute = {
 
         if (c !== null) {
             data.userId = new Date().getFullYear() + String(c + 1).padStart(4, '0');
-            data.password = data.userName.substring(0, 4).toUpperCase() + String(data.registrationDate.getDate()).padStart(2, '0') + String(data.registrationDate.getMonth() + 1).padStart(2, '0');
+            data.password = bcryptjs.hash(data.userName.substring(0, 4).toUpperCase() + String(data.registrationDate.getDate()).padStart(2, '0') + String(data.registrationDate.getMonth() + 1).padStart(2, '0'),5);
             await data.save()
                 .then((doc) => {
                     res.sendStatus(201);
