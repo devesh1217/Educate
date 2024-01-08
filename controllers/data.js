@@ -1,10 +1,13 @@
 import { google } from "googleapis";
 import 'fs';
 import nodemailer from 'nodemailer';
-import credentials from '../apiKeys.json' with { type: "json" };
 import userSchema from '../model/user.js'
 
-const { private_key, client_email, client_id, auth_uri, token_uri } = credentials;
+const  private_key="41148e5432158872a8c4595ee3868b6c849b49dc";
+const client_email="gwoc-test@gwoc-409815.iam.gserviceaccount.com";
+const client_id="113328304135101276873";
+const auth_uri="https://accounts.google.com/o/oauth2/auth";
+const token_uri="https://oauth2.googleapis.com/token" ;
 
 const auth = new google.auth.GoogleAuth({
     credentials: {
@@ -95,21 +98,21 @@ const dataRoute = {
                     ans.push(testData[i]);
                 }
             }
-            console.log(ans)
             res.status(200).json(ans);
         }else {
             res.status(200).json(testData);
         }
     },
     getResult: async (req, res) => {
-        const id = req.body.id;
+        const id = req.params.id;
         let appearedTest;
         try{
-            appearedTest = await userSchema.findOne({ userId: id },{testData:1});
+            appearedTest = await userSchema.findOne({ userId: id },{_id:0,userId:1,userName:1,email:1,mobile:1,testData:1});
+            res.status(200).json(appearedTest.testData);
         } catch(err){
             console.log(err)
+            res.sendStatus(500);
         }   
-        res.json(appearedTest.testData)
     },
     getLec: async (req, res) => {
         const folderId = req.params.id;
