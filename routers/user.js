@@ -6,7 +6,7 @@ const userRouter = express.Router();
 userRouter
     .post('/',user.create)
     .get('/admin/pending',user.pending)
-    .get('/admin/enroll',user.enroll)
+    .get('/admin/enrolled',user.enroll)
     .get('/admin/payment/:id',user.payment)
     .get('/get/:id',user.getOne)
     .get('/name/:id',user.getName)

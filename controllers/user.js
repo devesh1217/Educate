@@ -104,6 +104,7 @@ const userRoute = {
     },
     payment: async (req, res) => {
         const id = req.params.id;
+        console.log(id)
         await userSchema.updateOne({ userId: id }, { $set: { paymentDone: true } })
             .then((doc) => {
                 if (doc)
