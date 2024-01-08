@@ -109,7 +109,7 @@ const dataRoute = {
         try{
             appearedTest = await userSchema.findOne({ userId: id },{_id:0,userId:1,userName:1,email:1,mobile:1,testData:1});
             if(appearedTest)
-                res.status(200).json(appearedTest.testData);
+                res.status(200).json(appearedTest);
             else
                 res.status(200).json({});
         } catch(err){
