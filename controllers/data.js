@@ -81,8 +81,20 @@ const dataRoute = {
         } catch(err){
             console.log(err)
         }
+        let ans=[];
         if(appearedTest){
-            const ans = testData.filter(test => !appearedTest.testData.some(userTest => userTest.id == test.id));
+            for(let i=0;i<testData.length;i++){
+                let f=true;
+                for(let j=0;j<appearedTest.testData;j++){
+                    if(appearedTest.testData[j].id==testData[i].id){
+                        f=false;
+                        break;
+                    }
+                }
+                if(f){
+                    ans.push(testData[i]);
+                }
+            }
             console.log(ans)
             res.status(200).json(ans);
         }else {
