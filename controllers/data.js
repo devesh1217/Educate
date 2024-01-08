@@ -85,7 +85,7 @@ const dataRoute = {
         if(appearedTest){
             for(let i=0;i<testData.length;i++){
                 let f=true;
-                for(let j=0;j<appearedTest.testData;j++){
+                for(let j=0;j<appearedTest.testData.length;j++){
                     if(appearedTest.testData[j].testId==testData[i].id){
                         f=false;
                         break;
