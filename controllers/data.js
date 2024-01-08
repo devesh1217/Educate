@@ -151,6 +151,7 @@ const dataRoute = {
         const ans = req.body.ans;
         const id = req.body.id;
         const testId = req.body.testId;
+        const testName = req.body.testName;
         const correct = [];
         const notMarked = [];
         const inCorrect = [];
@@ -205,17 +206,17 @@ const dataRoute = {
         acc=100*(correct.length)/((correct.length)+(inCorrect.length));
         const mailOptions = {
             from: 'results.tarangsir@class.in',
-            to: 'u22cs067@coed.svnit.ac.in',
-            subject: 'Test Result of date ' + new Date().toLocaleDateString(),
-            text: 'Test Result of date ' + new Date().toLocaleDateString(),
+            to: userData.email,
+            subject: 'Test Result of date ' +testName+" ("+ new Date().toLocaleDateString()+")",
+            text: 'Test Result of date ' +testName+" ("+ new Date().toLocaleDateString()+")",
             html: `<div class="result-box" style="font-family:Verdana, Geneva, Tahoma, sans-serif">
             <div style="text-align: center; font-size: 2rem; background-color: rgb(25, 62, 156); color: white; ">
                 Test Result
             </div>
             <div style="font-size: 1.2rem; margin-top: 2rem; margin-bottom: 2rem; ">
-                <div>Name:</div>
-                <div>st name : </div>
-                <div>Date : </div>
+                <div>Test : ${testName}</div>
+                <div>st name : ${userData.userName}</div>
+                <div>Date : ${new Date().toLocaleString()}</div>
             </div>
             <hr>
             <div style="font-size: 1.2rem; margin-top: 2rem; margin-bottom: 2rem; "> 
