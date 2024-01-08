@@ -19,7 +19,12 @@ main()
     .then(() => { console.log('DB Connected') })
     .catch((err) => { console.log('Error occuered!', err) });
 
-
+server.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:5500');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+});
 server.use(cors());
 server.use(express.json());
 server.use(express.static('public'));
