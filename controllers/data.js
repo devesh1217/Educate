@@ -150,6 +150,7 @@ const dataRoute = {
         const ansKey = await getGoogleSheetValues(req.params.id);
         const ans = req.body.ans;
         const id = req.body.id;
+        const testId = req.body.testId;
         const correct = [];
         const notMarked = [];
         const inCorrect = [];
@@ -254,7 +255,7 @@ const dataRoute = {
             { 
                 $push: { 
                     testData: { 
-                        id: req.params.id,
+                        testId,
                         correct: correct,
                         inCorrect: inCorrect,
                         notMarked: notMarked,
