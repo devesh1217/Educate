@@ -76,7 +76,21 @@ const userRoute = {
                 res.sendStatus(404);
             });
     },
-    admin: async (req, res) => {
+    pending: async (req, res) => {
+        const id = req.params.id;
+        await userSchema.find({ paymentDone: {$eq:false} })
+            .then((doc) => {
+                if (doc) {
+                    res.status(200).json(doc);
+                } else {
+                    res.status(200).json({});
+                }
+            }).catch((err) => {
+                console.log(err)
+                res.sendStatus(404);
+            });
+    },
+    enroll: async (req, res) => {
         const id = req.params.id;
         await userSchema.find({ paymentDone: {$eq:true} })
             .then((doc) => {
@@ -87,6 +101,18 @@ const userRoute = {
                 }
             }).catch((err) => {
                 console.log(err)
+                res.sendStatus(404);
+            });
+    },
+    payment: async (req, res) => {
+        const id = req.params.id;
+        await userSchema.updateOne({ userId: id }, { $set: { paymentDone: true } })
+            .then((doc) => {
+                if (doc)
+                    res.status(200).json(doc);
+                else
+                    res.status(200).json(null);
+            }).catch((err) => {
                 res.sendStatus(404);
             });
     },
@@ -118,18 +144,7 @@ const userRoute = {
                 res.sendStatus(404);
             });
     },
-    payment: async (req, res) => {
-        const id = req.body.id || req.params.id;
-        await userSchema.updateOne({ userId: id }, { $set: { paymentDone: true } })
-            .then((doc) => {
-                if (doc)
-                    res.status(200).json(doc);
-                else
-                    res.status(200).json(null);
-            }).catch((err) => {
-                res.sendStatus(404);
-            });
-    },
+    
 }
 
 

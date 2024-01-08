@@ -11,8 +11,8 @@ const port = 8080;
 
 
 const main = async () => {
-    await mongoose.connect('mongodb+srv://u22cs035:abcd@cluster0.ffngqxj.mongodb.net/users?retryWrites=true&w=majority');
-    // await mongoose.connect('mongodb://localhost:27017/gwoc');
+    // await mongoose.connect('mongodb+srv://u22cs035:abcd@cluster0.ffngqxj.mongodb.net/users?retryWrites=true&w=majority');
+    await mongoose.connect('mongodb://localhost:27017/gwoc');
 }
 
 main()

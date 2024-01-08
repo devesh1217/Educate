@@ -80,9 +80,9 @@ const dataRoute = {
             testData = await listFilesInFolder(folderId);
         } catch(err){
             console.log(err)
-        }   
+        }
         const ans = testData.filter(test => !appearedTest.testData.some(userTest => userTest.id === test.id));
-        res.json(ans)
+        res.status(200).json(ans);
     },
     getResult: async (req, res) => {
         const id = req.body.id;
