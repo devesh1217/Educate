@@ -112,6 +112,7 @@ const userRoute = {
                 else
                     res.status(200).json(null);
             }).catch((err) => {
+                console.log(err)
                 res.sendStatus(404);
             });
     },
