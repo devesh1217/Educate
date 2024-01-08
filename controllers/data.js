@@ -82,7 +82,7 @@ const dataRoute = {
             console.log(err)
         }
         if(appearedTest){
-            const ans = testData.filter(test => !appearedTest.testData.some(userTest => userTest.id === test.id));
+            const ans = testData.filter(test => !appearedTest.testData.some(userTest => userTest.id == test.id));
             console.log(ans)
             res.status(200).json(ans);
         }else {
