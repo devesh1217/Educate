@@ -5,6 +5,7 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import userRouter from "./routers/user.js";
 import dataRouter from "./routers/data.js";
+import reviewRouter from "./routers/review.js";
 
 const server = express();
 const port = 8080;
@@ -30,6 +31,7 @@ server.use(express.json());
 server.use(express.static('public'));
 server.use('/user', userRouter);
 server.use('/data', dataRouter);
+server.use('/review', reviewRouter);
 
 
 
