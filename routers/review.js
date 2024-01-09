@@ -3,7 +3,7 @@ import review from '../controllers/review.js'
 
 const reviewRouter = express.Router();
 
-dataRouter
+reviewRouter
     .get('/',review.create)
     .get('/get/',review.get)
 
