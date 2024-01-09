@@ -263,6 +263,7 @@ const dataRoute = {
                 $push: { 
                     testData: { 
                         testId,
+                        testName,
                         correct: correct,
                         inCorrect: inCorrect,
                         notMarked: notMarked,
