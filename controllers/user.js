@@ -3,18 +3,18 @@ import nodemailer from 'nodemailer';
 import bcryptjs from 'bcryptjs'
 
 const userRoute = {
-    otp: async (req, res)=>{
+    otp: async (req, res) => {
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                user: 'u22cs035@coed.svnit.ac.in', 
-                pass: 'pkjncigmlpcxlurv',       
+                user: 'u22cs035@coed.svnit.ac.in',
+                pass: 'pkjncigmlpcxlurv',
             },
         });
 
         let otpDigits = '';
-        for(let i=0;i<6;i++){
-            otpDigits+= Math.floor(Math.random() * 10);
+        for (let i = 0; i < 6; i++) {
+            otpDigits += Math.floor(Math.random() * 10);
         }
         const mailOptions = {
             from: 'services@tarangsir.ac.in',
@@ -28,7 +28,7 @@ const userRoute = {
             if (error) {
                 console.log(info.response);
             } else {
-                res.status(200).json({otp:otpDigits});
+                res.status(200).json({ otp: otpDigits });
             }
         });
     },
@@ -45,7 +45,7 @@ const userRoute = {
 
         if (c !== null) {
             data.userId = new Date().getFullYear() + String(c + 1).padStart(4, '0');
-            data.password = await bcryptjs.hash(data.userName.substring(0, 4).toUpperCase() + String(data.registrationDate.getDate()).padStart(2, '0') + String(data.registrationDate.getMonth() + 1).padStart(2, '0'),5);
+            data.password = await bcryptjs.hash(data.userName.substring(0, 4).toUpperCase() + String(data.registrationDate.getDate()).padStart(2, '0') + String(data.registrationDate.getMonth() + 1).padStart(2, '0'), 5);
             await data.save()
                 .then((doc) => {
                     res.sendStatus(201);
@@ -61,7 +61,7 @@ const userRoute = {
         await userSchema.findOne({ userId: id })
             .then((doc) => {
                 if (doc) {
-                    if (doc.userId == id && bcryptjs.compare(pswd,doc.password)) {
+                    if (doc.userId == id && bcryptjs.compare(pswd, doc.password)) {
                         res.status(200).json({ isValid: true });
                     } else {
                         res.status(200).json({ isValid: false });
@@ -76,7 +76,7 @@ const userRoute = {
     },
     pending: async (req, res) => {
         const id = req.params.id;
-        await userSchema.find({ paymentDone: {$eq:false} })
+        await userSchema.find({ paymentDone: { $eq: false } })
             .then((doc) => {
                 if (doc) {
                     res.status(200).json(doc);
@@ -90,7 +90,7 @@ const userRoute = {
     },
     enroll: async (req, res) => {
         const id = req.params.id;
-        await userSchema.find({ paymentDone: {$eq:true} })
+        await userSchema.find({ paymentDone: { $eq: true } })
             .then((doc) => {
                 if (doc) {
                     res.status(200).json(doc);
@@ -104,7 +104,7 @@ const userRoute = {
     },
     payment: async (req, res) => {
         const id = req.params.id;
-        console.log(id)
+        const userData = await userSchema.findOne({ userId: id });
         await userSchema.updateOne({ userId: id }, { $set: { paymentDone: true } })
             .then((doc) => {
                 if (doc)
@@ -115,10 +115,35 @@ const userRoute = {
                 console.log(err)
                 res.sendStatus(404);
             });
+
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: 'u22cs035@coed.svnit.ac.in',
+                pass: 'pkjncigmlpcxlurv',
+            },
+        });
+
+        
+        const mailOptions = {
+            from: 'services@tarangsir.ac.in',
+            to: userData.email,
+            subject: 'Thanks for registering!',
+            text: 'Get Your Login Id and password here.',
+            html: '<p>Welcome to Educate.</p><p>Here are your Login Id and Pssword to login into our webpage. Remember your credentials for smooth learning journy.</p><table><tr><th>Login Id(Enrollment No.)</th><td>'+req.params.id+'</td></tr><tr><th>Password</th><td>'+userData.userName.substring(0,4)+userData.registrationDate.getDate()+userData.registrationDate.getMonth()+'</td></tr></table>'
+        };
+
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.log(info.response);
+            } else {
+                res.status(200).json({ otp: otpDigits });
+            }
+        });
     },
     getOne: async (req, res) => {
         const id = req.params.id;
-        await userSchema.findOne({ userId: id },{userId:1,userName:1,email:1,mobile:1,testData:1})
+        await userSchema.findOne({ userId: id }, { userId: 1, userName: 1, email: 1, mobile: 1, testData: 1 })
             .then((doc) => {
                 if (doc) {
                     res.status(200).json(doc);
@@ -132,7 +157,7 @@ const userRoute = {
     },
     getName: async (req, res) => {
         const id = req.params.id;
-        await userSchema.findOne({ userId: id },{userId:1,userName:1,_id:0})
+        await userSchema.findOne({ userId: id }, { userId: 1, userName: 1, _id: 0 })
             .then((doc) => {
                 if (doc) {
                     res.status(200).json(doc);
@@ -144,7 +169,7 @@ const userRoute = {
                 res.sendStatus(404);
             });
     },
-    
+
 }
 
 
