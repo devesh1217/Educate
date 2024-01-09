@@ -4,7 +4,7 @@ import review from '../controllers/review.js'
 const reviewRouter = express.Router();
 
 dataRouter
-    .get('/:id',review.get)
-    .get('/get/:id',review.getLec)
+    .get('/',review.create)
+    .get('/get/',review.get)
 
 export default reviewRouter;
