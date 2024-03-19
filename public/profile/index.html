@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Mohammad Sahragard">
+    <title>Responsive Profile Page</title>
+    <link rel="icon" href="favicon.png" type="image/x-icon">
+    <!-- import font icon (fontawesome) -->
+    <script src="https://kit.fontawesome.com/b8b432d7d3.js" crossorigin="anonymous"></script>
+    <!-- import css file (style.css) -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="nav.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;700;800&family=Nunito+Sans:wght@200;300;400;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&family=Oswald:wght@200;300;400;500;600;700&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Rubik+Spray+Paint&display=swap"
+        rel="stylesheet">
+        <script src="https://kit.fontawesome.com/92800ec90a.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- <link rel="stylesheet" href="hover.css"> -->
+</head>
+
+<body>
+    <nav id="navbar">
+
+        <div class="logo">
+
+            <img src="logo-bg-remove .png" alt=" ">
+
+        </div>
+
+        <div class="menu">
+            <ul>
+                <li><a href="../">Home</a></li>
+                <li><a href="#">Class</a></li>
+                <li><a href="../tarang/">About</a></li>
+                <li id="profile"><a href="../profile/">About</a></li>
+                <li><a href="./testimonial/">Feedback</a></li>
+                <li><a href="../index.html#range">Contact</a></li>
+                <li id="admin" ><a href="../admin/">Admin</a></li>
+            </ul>
+        </div>
+        
+        
+        <div class="last-col">
+            <a id="logIn_home" href="../login/" class="reg"><i class="fa-regular fa-user"></i>Log In</a>
+            <a id="logOut_home" class="reg"><i class="fa-regular fa-user"></i>Log Out</a>
+        </div>
+        <div class="tolg" onclick="toggleMenu()">☰</div>
+
+    </nav>
+    <div class="container">
+
+        <div class="profile-card">
+            <div class="profile-header"><!-- profile header section -->
+                <div class="main-profile">
+                    <div class="profile-image"></div>
+                    <div class="profile-names">
+                        <h1 class="username" id="userName"></h1>
+                        <small class="page-title" id="userId"></small>
+                        <small class="page-title" id="email"></small>
+                        <small class="page-title" id="mobile"></small>
+                    </div>
+                </div>
+            </div>
+            <div class="test-info">
+                <!-- <div class="upperTest">
+                            <div class="testName">
+                                Test-1
+                            </div>
+                            <div class="testMarks">240/300</div>
+                        </div>
+                        <div class="lowerTest">
+                            <div class="PhyMarks">Physics : 80/100</div>
+                            <div class="ChemMarks">Physics : 80/100</div>
+                            <div class="MathMarks">Physics : 80/100</div>
+                        </div> -->
+
+                <!-- card -->
+                <!-- <div class="test-sec">
+                    <div class="test-name">Jee MockTest 1</div>
+                    <div class="sub-wise">
+                        <div class="sub phy">Physics : 50</div>
+                        <div class="sub che">Chemitry : 67</div>
+                        <div class="sub math">Maths : 90</div>
+                    </div>
+                    <div class="total">Total <br> 234/300</div>
+            
+                </div>
+                <div class="card-info">
+                    <h4>Analysis</h4>
+                    <div class="extra">
+                        <div class="total-r extraName"> Right : 19</div>
+                        <div class="total-in extraName">Wrong : 19</div>
+                        <div class="total-nAttempt extraName">NA : 14</div>
+                        <div class="acu" > Accuracy : 88% </div>
+                    </div>
+                </div> -->
+                
+            </div>
+        </div>
+    </div>
+
+    </div>
+    <script src="appp.js"></script>
+</body>
+
+</html>

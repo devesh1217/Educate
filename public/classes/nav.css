@@ -1,0 +1,148 @@
+ /*-- nav --*/
+
+ #navbar {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    height: auto;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+    position: fixed;
+    padding: 20px;
+    z-index: 20;
+    box-shadow: 1px 0 10px 5px rgba(0, 0, 0, 0.347);
+}
+
+.logo {
+    height: 30px;
+}
+
+.logo img {
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.menu {
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+}
+
+.menu ul {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.menu ul li a,
+.last-col a {
+    color: var(--fontColorblack);
+    margin: 0px 20px;
+    font-size: 1rem;
+    font-weight: 450;
+}
+
+.last-col a {
+    font-weight: 350;
+}
+
+.last-col {
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.last-col .reg {
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    padding: 8px 20px;
+    background-color: var(--fontColor);
+    color: #ffffff;
+    border-radius: 4px;
+    margin-left: 8px;
+}
+
+.last-col .reg i {
+    margin: 0px 10px 0px 0px;
+}
+
+.last-col .ser {
+    background-color: #d4d2ee;
+    color: var(--fontColorblack);
+    padding: 8px 10px;
+    border-radius: 4px;
+    margin: 0%;
+}
+
+
+
+.tolg {
+    display: none;
+}
+
+
+
+@media (max-width:900px) {
+    .menu {
+        display: none;
+        /* Hide the menu for small screens by default */
+    }
+    
+    .tolg {
+        display: block;
+        /* Display the "tolg" class for small screens */
+        cursor: pointer;
+    }
+    
+    
+    .menu.active {
+        display: flex;
+        /* Show the menu when active class is added */
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        /* Adjust the top position as needed */
+        left: 0;
+        width: 100%;
+        margin: 0 0px;
+        background-color: transparent;
+        /* Add a background color for better visibility */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        z-index: -10;
+        animation: falling 0.5s ease ;
+        /* background-color: black; */
+        backdrop-filter: blur(50px);
+        /* background-color: #fff; */
+        font-size: 20px;
+    
+        
+    }
+    
+    @keyframes falling {
+        0%{
+            transform: translateY(-120px);
+            z-index: -10;   
+            opacity: 0;
+        }
+        30%{
+            opacity: 0;
+        }
+        
+        100%{
+            transform: translateY(0px);
+            z-index: -10;   
+            opacity: 1;
+    
+        }
+        
+    }
+}
+

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="class.css">
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://kit.fontawesome.com/92800ec90a.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;700;800&family=Nunito+Sans:wght@200;300;400;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&family=Oswald:wght@200;300;400;500;600;700&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Rubik+Spray+Paint&display=swap"
+        rel="stylesheet">
+    <title>Classroom Layout</title>
+    <link rel="icon" href="favicon.png" type="image/x-icon">
+
+
+</head>
+
+<body>
+    <nav id="navbar">
+
+        <div class="logo">
+
+            <img src="logo-bg-remove .png" alt=" ">
+
+        </div>
+
+        <div class="menu">
+            <ul>
+                <li><a href="../">Home</a></li>
+                <li><a href="#">Class</a></li>
+                <li><a href="../tarang/">About</a></li>
+                <li id="profile"><a href="../profile/">Profile</a></li>
+                <li><a href="./testimonial/">Feedback</a></li>
+                <li><a href="../#range">Contact</a></li>
+                <li id="admin" ><a href="../admin/">Admin</a></li>
+            </ul>
+        </div>
+        
+        
+        <div class="last-col">
+            <a id="logIn_home" href="../login/" class="reg"><i class="fa-regular fa-user"></i>Log In</a>
+            <a id="logOut_home" class="reg"><i class="fa-regular fa-user"></i>Log Out</a>
+        </div>
+        <div class="tolg" onclick="toggleMenu()">☰</div>
+
+    </nav>
+
+
+
+
+
+    <div class="container">
+        <!-- <header>
+            <h1>Classroom Title</h1>
+        </header> -->
+        <main>
+            <div class="sidebar">
+                <h2>Class Menu</h2>
+                <ul>
+                    <li><a href="#" id="home">Home</a></li>
+                    <li><a href="#" id="tests">Tests</a></li>
+                    <!-- <li><a href="#" id="announcement">Announcements</a></li> -->
+                </ul>
+            </div>
+            <div class="main-content">
+                <div class="" id="home-class">
+                    <div class="sub-name-nav">
+                        <div class="sub"><input type="radio" name="subject" id="phy" class="sub-name-circle" checked >
+                            <label for="phy" class="custom-radio-label" id="phy-lab">Physics</label>
+                        </div>
+                        <div class="sub"><input type="radio" name="subject" id="che" class="sub-name-circle">
+                            <label for="che" class="custom-radio-label" id="che-lab">Chemistry</label>
+                        </div>
+                        <div class="sub"><input type="radio" name="subject" id="math" class="sub-name-circle">
+                            <label for="math" class="custom-radio-label" id="math-lab">Maths</label>
+                        </div>
+                    </div>
+    
+                    <div class="chapter-list">
+                               
+                    </div>
+                </div>
+                <div class="none" id="test-class">
+                </div>
+            </div>
+        </main>
+        <footer>
+            <p>© 2024. All rights reserved to Mr. Tarang</p>
+        </footer>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
+    <script src="APP.js"></script>
+    
+</body>
+
+</html>
+
+
+
+
+
+<!-- const arr=
+[
+    {
+        1:none
+        2:none
+        3:name
+        4:link
+    },
+    {
+        1:none
+        2:none
+        3:name
+        4:link
+    }
+] -->

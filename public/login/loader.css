@@ -1,0 +1,28 @@
+.loader {
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid rgba(32, 144, 218, 0.924);
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    animation: spin 1.2s linear infinite;
+    display: none;
+    }
+.loader-login {
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid rgba(32, 144, 218, 0.924);
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    animation: spin 1.2s linear infinite;
+    display: none;
+    }
+    
+@keyframes spin{
+    from{
+        transform: rotate(0deg);
+    }
+    to
+    {
+        transform: rotate(360deg);
+    }
+}

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title> Educate | Online Web </title>
+    <link rel="icon" href="favicon.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;700;800&family=Nunito+Sans:wght@200;300;400;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&family=Oswald:wght@200;300;400;500;600;700&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Rubik+Spray+Paint&display=swap"
+        rel="stylesheet">
+
+
+
+    <!--link css-->
+    <link rel="stylesheet" href="./home/style_scroll.css"> <!-- Add your styles here -->
+    <link rel="stylesheet" type="text/css" href="./home/style.css">
+
+    <!--link fontawsome-->
+    <script src="https://kit.fontawesome.com/92800ec90a.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+</head>
+
+<body>
+
+    <nav id="navbar">
+
+        <div class="logo">
+
+            <img src="./home/img/new/logo-bg-remove .png" alt=" ">
+
+        </div>
+
+        <div class="menu">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="./classes/">Class</a></li>
+                <li><a href="./tarang/">About</a></li>
+                <li id="profile" ><a href="./profile/">Profile</a></li>
+                <li><a href="./testimonial/">Feedback</a></li>
+                <li><a href="#range">Contact</a></li>
+                <li id="admin"><a href="./admin">Admin</a></li>
+            </ul>
+        </div>
+        
+        
+        <div class="last-col">
+            <a id="logIn_home" href="./login/" class="reg"><i class="fa-regular fa-user"></i>Log In</a>
+            <a id="logOut_home" class="reg"><i class="fa-regular fa-user"></i>Log Out</a>
+        </div>
+        <div class="tolg" onclick="toggleMenu()">☰</div>
+
+    </nav>
+
+    <!-- <div class="search" id="sear">
+        <form>
+            <input type="text" name="search">
+            <input type="submit" name="submit" value="search">
+        </form>
+    </div> -->
+
+    
+
+    <section id="main">
+
+        <div class="main-text">
+
+            <strong>Better learning future with us</strong>
+            <h2>education is <br> about academic excellence</h2>
+            <p> Sed eu volutpat arcu, a tincidunt nulla quam, feugiat sit amet ipsum a, dapibus porta velit.</p>
+
+            <div class="main-but">
+                <a href="#demo">Get Started Today <i class="fa-sharp fa-solid fa-arrow-right"></i></a>
+            </div>
+
+        </div>
+
+        <div class="main-img">
+
+            <img src="./home/img/new/Edu-1-removebg-preview (1).png"  alt="" class="img-1">
+            <img src="./home/img/new/Edu-1-removebg-preview.png" id="rotateImage" alt="" class="img-2">
+            <img src="./home/img/new/Edu-2.png" alt="" class="img-3">
+
+        </div>
+        </div>
+    </section>
+
+    <section id="demo">
+
+
+        <div id="video">
+            <div class=" about-text-block">
+                <h2>Here is the Demo Video</h2>
+            </div>
+            <iframe id="demo-video" src="https://drive.google.com/file/d/1fpasEEE4OZNxT7r-G0yTSntFyDk1XDZo/preview" width="100%" height="200em"></iframe>
+
+        </div>
+
+        <div class="about-text">
+            <div class=" about-text-block">
+                <h2>Try this notes</h2>
+            </div>
+
+            <div class="about-block">
+
+                <div class="about-box">
+                    <div class="box-text">
+                        <a href="https://drive.google.com/file/d/1AIAiEP349sr3fIr9l4IHOa6IRzo_kyzI/view?usp=drive_link" target="_blank" ><strong>📘Projectile Motion</strong></a> 
+                    </div>
+                </div>
+
+                <div class="about-box">
+                    <div class="box-text">
+                        <a href="https://drive.google.com/file/d/1s2aAfFjurOT5GftPiMl_qbxLb203aa2T/view?usp=drive_link" target="_blank" ><strong>📘Semi Conductor</strong></a> 
+                    </div>
+                </div>
+
+                <div class="about-box">
+                    <div class="box-text">
+                        <a href="https://drive.google.com/file/d/1kvNuhOejOsaStE78J67fVhHnRZFp8Uqx/view?usp=drive_link" target="_blank" ><strong>📘River Boat Problem</strong></a> 
+
+                    </div>
+                </div>
+                <div class="box-but">
+
+                    <a href="./tarang/index.html">SEE MORE ABOUT <i class="fa-sharp fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="classroom">
+
+        <div class="class-text">
+            <strong>COURSE CATALOG</strong>
+            <h2>online course<span style="color: #5217ff;"> JEE</span></h2>
+        </div>
+
+        <div class="class-block">
+
+            <div class="box">
+
+                <div class="box-icon">
+                    <i class="fa-solid fa-bolt fa-icons"></i>
+                </div>
+
+                <div class="box-text">
+                    <h2> Physics </h2>
+
+                    <div class="box-but">
+                        <p>We’ll walk through the essential elements of Physics</p>
+                        <a id="phy-btn" href="./classes/">GET STARTED</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="box">
+
+                <div class="box-icon">
+                    <i class="fa-solid fa-flask fa-icons"></i>
+                </div>
+
+                <div class="box-text">
+                    <h2> Chemistry </h2>
+
+                    <div class="box-but">
+                        <p>We’ll walk through the essential elements of Chemistry</p>
+                        <a id="chem-btn" href="./classes/">GET STARTED</a>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="box">
+
+                <div class="box-icon">
+
+                    <i class="fa-solid fa-percent fa-icons"></i>
+
+                </div>
+
+                <div class="box-text">
+                    <h2> Maths </h2>
+
+                    <div class="box-but">
+                        <p>We’ll walk through the essential elements of Maths</p>
+                        <a id="maths-btn" href="./classes/">GET STARTED</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="tag-list" class="tag-list">
+                <!-- Tags will be dynamically added here -->
+            </div>
+    
+            <div class="fade"></div>
+
+            <!-- <div class="box">
+
+                <div class="box-icon">
+                    <i class="fa-sharp fa-solid fa-chalkboard fa-icons"></i>
+                </div>
+
+                <div class="box-text">
+                    <h2> Computer Scines </h2>
+
+                    <div class="box-but">
+                        <p>We’ll walk through the essential elements of template</p>
+                        <a href="">GET STARTED</a>
+                    </div>
+                </div>
+
+            </div> -->
+
+        </div>
+
+    </section>
+
+
+    <section id="about">
+
+
+        <div id="book">
+
+            <img src="./home/img/new/book.gif" alt="" class="aimg-1">
+
+        </div>
+
+        <div class="about-text">
+            <div class=" about-text-block">
+                <strong>WHO WE ARE</strong>
+                <h2>We Offer The Best Course</h2>
+            </div>
+
+            <div class="about-block">
+
+                <div class="about-box">
+                    <img src="./home/img/new/about-icon-1.png" class="aicon-1">
+                    <div class="box-text">
+                        <strong>Best Quality Course</strong>
+                        <p>Talk about what they are interested in and how you can help them outIn other words, it works
+                            out for them.</p>
+                    </div>
+                </div>
+
+                <div class="about-box">
+                    <img src="./home/img/new/about-icon-2.png" class="aicon-2">
+                    <div class="box-text">
+                        <strong>Best Quality Course</strong>
+                        <p>Talk about what they are interested in and how you can help them outIn other words, it works
+                            out for them.</p>
+                    </div>
+                </div>
+
+                <div class="about-box">
+                    <img src="./home/img/new/about-icon-3.png" class="aicon-3">
+                    <div class="box-text">
+                        <strong>Best Quality Course</strong>
+                        <p>Talk about what they are interested in and how you can help them outIn other words, it works
+                            out for them.</p>
+
+                    </div>
+                </div>
+                <div class="box-but">
+
+                    <a href="./tarang/index.html">SEE MORE ABOUT <i class="fa-sharp fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- <section id="success">
+
+        <div class="class-text">
+            <strong>OUR SUCCESS</strong>
+            <h2>About Our Success Story</h2>
+        </div>
+
+        <div class="box-r">
+            <div class="suc-box">
+                <div class="suc-b-1">
+                    <img src="./img/new/lec.png" alt="" class="cet-1">
+                    <h1>100+</h1>
+                    <strong>LECTURES</strong>
+                </div>
+            </div>
+
+            <div class="suc-box">
+                <div class="suc-b-1">
+                    <img src="./img/new/cet.png" alt="" class="cet-1">
+                    <h1>160+</h1>
+                    <strong>COURSES</strong>
+                </div>
+
+            </div>
+
+            <div class="suc-box">
+                <div class="suc-b-1">
+                    <img src="./img/new/stud.png" alt="" class="cet-1">
+                    <h1>1500+</h1>
+                    <strong>STUDENTS</strong>
+                </div>
+            </div>
+
+            <div class="suc-box">
+                <div class="suc-b-1">
+                    <img src="./img/new/grad.png" alt="" class="cet-1">
+                    <h1>12000+</h1>
+                    <strong>SUCCESS</strong>
+                </div>
+            </div>
+
+        </div>
+
+    </section> -->
+
+    
+
+    <section id="range">
+
+
+        <div class="form-text">
+
+            <div class="range-text">
+                <h2>CONTACT US</h2>
+
+            </div>
+
+            <div class="form-box">
+                <img src="./home/img/new/local-g.png">
+                <div class="box-text">
+                    <strong>ADDRESS</strong>
+                    <p>SVNIT Campus, Surat</p>
+                </div>
+            </div>
+
+            <div class="form-box">
+                <img src="./home/img/new/send.png" alt="" class="img-r-2">
+                <div class="box-text">
+                    <strong>EMAIL</strong>
+                    <p>tarangbombale01@gmail.com</p>
+                </div>
+            </div>
+
+
+            <div class="form-box">
+                <img src="./home/img/new/telp.png" alt="" class="img-r-3">
+                <div class="box-text">
+                    <strong>TEL-PHONE</strong>
+                    <p>+91 766663804</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-sec">
+
+            <form>
+
+                <div class="f-1">
+                    <input id="fname" type="text" name="fname" value="" placeholder="First name">
+                    <input id="lname" type="text" name="lname" value="" placeholder="Last name ">
+                </div>
+
+                <input type="email" name="email" value="" placeholder="Enter Email address">
+                <input type="tel" name="tel" value="" placeholder="Enter Tel-number ">
+                <textarea name="textarea" placeholder="Type Your Message......."></textarea>
+                <input type="submit" name="submit" value="SEND">
+            </form>
+
+        </div>
+
+    </section>
+
+    <footer>
+
+        <div class="fo-2">
+            <p>© 2024. All rights reserved to Mr. Tarang</p>
+        </div>
+    </footer>
+
+
+
+
+
+
+
+    <!--script js-->
+    <script src="./home/script.js"></script>
+    <script src="./home/script_scroll.js"></script> <!-- Include your JS file here -->
+
+</body>
+
+
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="admin.css">
+    <!-- <script src="https://kit.fontawesome.com/92800ec90a.js" crossorigin="anonymous"></script> -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;700;800&family=Nunito+Sans:wght@200;300;400;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&family=Oswald:wght@200;300;400;500;600;700&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Rubik+Spray+Paint&display=swap"
+        rel="stylesheet">
+    <title>Classroom Layout</title>
+    <link rel="icon" href="favicon.png" type="image/x-icon">
+
+</head>
+
+<body>
+    <nav id="navbar">
+
+        <div class="logo">
+
+            <img src="logo-bg-remove .png" alt=" ">
+
+        </div>
+
+        <div class="menu">
+            <ul>
+                <li><a href="../">Home</a></li>
+                <li><a href="../classes/">Class</a></li>
+                <li><a href="../tarang/">About</a></li>
+                <li><a href="../#range">Contact</a></li>
+            </ul>
+        </div>
+        
+        
+        <div class="last-col">
+            <a id="logIn_home" href="../login/" class="reg"><i class="fa-regular fa-user"></i>Log In</a>
+            <a id="logOut_home" class="reg"><i class="fa-regular fa-user"></i>Log Out</a>
+        </div>
+        <div class="tolg" onclick="toggleMenu()">☰</div>
+
+    </nav>
+    <div class="container">
+        <!-- <header>
+            <h1>Classroom Title</h1>
+        </header> -->
+        <main>
+            <!-- <div class="sidebar">
+                <h2>Class Menu</h2>
+                <ul>
+                    <li><a href="#" id="home">Home</a></li>
+                    <li><a href="#" id="tests">Tests</a></li>
+                </ul>
+            </div> -->
+
+            <div class="main-content">
+                
+                <div class="pending-std">
+                    <h1>Pending</h1>
+                    <div id="pnd-class">
+                        <!-- <div class="std-block">
+                            <div class="std-name">
+                                Test :- 1
+                            </div>
+                            <div class="alwd-btn"><button id="t11">Start</button></div>                                       
+                        </div> -->
+                    </div>
+                </div>
+                <div class="allowed-std">
+                    <h1>Allowed</h1>
+                    <div id="alwd-class">
+                        <!-- <div class="std-block">
+                            <div class="std-name">
+                                Test :- 1
+                            </div>
+                            <div class="alwd-btn"><button id="t12">Start</button></div>                                       
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- <footer>
+            <p>&copy; 2024 Classroom Name. All rights reserved.</p>
+        </footer> -->
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
+    <script src="admin.js"></script>
+
+</body>
+
+</html>

@@ -29,9 +29,9 @@ server.use((req, res, next) => {
 server.use(cors());
 server.use(express.json());
 server.use(express.static('public'));
-server.use('/user', userRouter);
-server.use('/data', dataRouter);
-server.use('/review', reviewRouter);
+server.use('/api/user', userRouter);
+server.use('/api/data', dataRouter);
+server.use('/api/review', reviewRouter);
 
 
 

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students' Feedback</title>
+    <link rel="icon" href="favicon.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;700;800&family=Nunito+Sans:wght@200;300;400;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&family=Oswald:wght@200;300;400;500;600;700&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Rubik+Spray+Paint&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="review.css">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="../login/loader.css">
+    <script src="https://kit.fontawesome.com/92800ec90a.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <nav id="navbar">
+
+        <div class="logo">
+
+            <img src="../home/img/new/logo-bg-remove .png" alt=" ">
+
+        </div>
+
+        <div class="menu">
+            <ul>
+                <li><a href="../">Home</a></li>
+                <li><a href="../classes/">Class</a></li>
+                <li><a href="../tarang/">About</a></li>
+                <li><a href="../profile/">Profile</a></li>
+                <li><a href="./testimonial/">Feedback</a></li> 
+                <li><a href="../#range">Contact</a></li>
+                <li id="admin"><a href="./admin">Admin</a></li>
+            </ul>
+        </div>
+        
+        
+        <div class="last-col">
+            <a id="logIn_home" href="../login/" class="reg"><i class="fa-regular fa-user"></i>Log In</a>
+            <a id="logOut_home" class="reg"><i class="fa-regular fa-user"></i>Log Out</a>
+        </div>
+        <div class="tolg" onclick="toggleMenu()">☰</div>
+
+    </nav>
+    <div class="container testimonial">
+        <h1 id="header-text" >Testimonial</h1>
+
+        <div class="reviews-container">
+            <div class="loader"></div>
+        </div>
+
+        <div class="wrapper">
+            <h3>Add Your Review.</h3>
+                <div class="rating">
+                    <input type="number" name="rating" id="user-rating" hidden>
+                    <i class='bx bx-star star' style="--i: 0;" id="1"></i>
+                    <i class='bx bx-star star' style="--i: 1;" id="2"></i>
+                    <i class='bx bx-star star' style="--i: 2;" id="3"></i>
+                    <i class='bx bx-star star' style="--i: 3;" id="4"></i>
+                    <i class='bx bx-star star' style="--i: 4;" id="5"></i>
+                </div>
+                <input type="text" id="user-name" placeholder="Your Name" required>
+                <input type="email" id="email" placeholder="Your Email" required>
+                <textarea id="user-comment" name="opinion" cols="20" rows="5" placeholder="Your opinion..."></textarea>
+                <div class="btn-group">
+                    <button type="submit" class="btn submit" id="submit">Submit</button>
+                    <button class="btn cancel">Cancel</button>
+                </div>
+                <div class="loader"></div>
+        </div>
+
+    </div>
+    <script src="review.js"></script>
+</body>
+</html>

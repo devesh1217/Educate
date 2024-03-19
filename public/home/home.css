@@ -1,0 +1,14 @@
+.main{
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 25px;
+    padding: 5vw 6vw;
+    border-radius: 65px;
+    background: linear-gradient(225deg, #9cb3c5, #b9d5ea);
+    box-shadow:  -41px 41px 82px #7b8d9b,
+                 41px -41px 82px #dfffff;
+}
+
+.edu-img-over{
+    
+}

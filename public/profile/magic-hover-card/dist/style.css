@@ -1,0 +1,159 @@
+/*------------------------------------*\
+  #ROOT
+\*------------------------------------*/
+:root {
+  --ff-primary: 'Rubik', sans-serif;
+  --ff-accent: 'Merriweather', serif;
+  
+  --clr-primary: #f00;
+  --clr-dark: #101419;
+  --delay: 200ms;
+  --transition: 300ms ease;
+}
+
+/*------------------------------------*\
+  #GLOBAL
+\*------------------------------------*/
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  margin: 0;
+
+  font-family: var(--ff-primary);
+  line-height: 1.6;
+  font-size: 1rem;
+  background-color: var(--clr-dark);
+  
+  /* From CodePen assets */
+  background-image: url('data:image/svg+xml,%3Csvg width="52" height="26" viewBox="0 0 52 26" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%239C92AC" fill-opacity="0.05"%3E%3Cpath d="M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z" /%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+  background-size: 20%;
+}
+
+body,
+h1, h2, h3,
+p {
+  margin: 0;
+}
+
+h1, h2, h3 {
+  font-family: var(--ff-accent);
+  line-height: 1.1;
+}
+
+img,
+picture {
+  display: block;
+  max-width: 100%;
+}
+
+/*------------------------------------*\
+  #CARD
+\*------------------------------------*/
+/**
+ * Quick explanation on how the transitions are working
+ * 
+ * 1. Remove the background overlay after the dash and content disappear.
+ * 2. Apply the background overlay on hover first.
+ * 
+ * 3. Remove the content after the dash disappears and before the background overlay.
+ * 4. Show the content after the background overlay.
+ *
+ * 5. Remove the dash when hover finished.
+ * 6. Show the dash after the background overlay and content appear.
+ */
+.card {
+  display: grid;
+  width: min(100% - 2rem, 20rem);
+  margin-block: 2rem;
+  padding-top: 14rem;
+  text-decoration: none;
+  color: #fff;
+
+  border-radius: 0.5em;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image: linear-gradient(rgb(0, 0, 0, 0.1), rgb(0, 0, 0, 0.9) 60%);
+  z-index: -1;
+  opacity: 0;
+  
+  transition: var(--transition) calc(var(--delay) * 2); /* [1] */
+}
+
+.card:is(:hover, :focus)::before {
+  transition: var(--transition); /* [2] */
+  opacity: 1;
+}
+
+.card__img-container {
+  position: absolute;
+  inset: 0;
+  z-index: -5;
+}
+
+.card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition);
+}
+
+.card:is(:hover, :focus) .card__img {
+  transform: scale(1.05);
+}
+
+.card__content {
+  display: grid;
+  justify-self: end;
+  gap: 0.5em;
+  padding: 1em;
+
+  opacity: 0;
+  transform: translateY(100%);
+  transition: 0ms;
+  position: relative;
+  transition: var(--transition) var(--delay); /* [3] */
+}
+
+.card:is(:hover, :focus) .card__content {
+  transform: translateY(0%);
+  opacity: 1;
+  transition: var(--transition) var(--delay); /* [4] */
+}
+
+.card__content::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 50%;
+  height: 3px;
+  
+  background-color: var(--clr-primary);
+  scale: 0;
+  transform-origin: left;
+  transition: var(--transition); /* [5] */
+}
+
+.card:is(:hover, :focus) .card__content::before {
+  transition: var(--transition) calc(var(--delay) * 2); /* [6] */
+  scale: 1;
+}
+
+.card__title {
+  font-size: 1.5rem;
+}
