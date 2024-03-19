@@ -17,27 +17,31 @@
       },
       {
         "src": "/classes",
-        "dest": "/public/classes/index.html"
+        "dest": "public/classes/index.html"
       },
       {
         "src": "/profile",
-        "dest": "/public/profile/index.html"
+        "dest": "public/profile/index.html"
       },
       {
         "src": "/tarang",
-        "dest": "/public/tarang/index.html"
+        "dest": "public/tarang/index.html"
       },
       {
         "src": "/admin",
-        "dest": "/public/admin/index.html"
+        "dest": "public/admin/index.html"
       },
       {
         "src": "/testimonial",
-        "dest": "/public/testimonial/index.html"
+        "dest": "public/testimonial/index.html"
       },
       {
-        "src": "/(.*)",
-        "dest": "/public/index.html"
+        "src": "/",
+        "dest": "public/index.html"
+      },
+      {
+        "src": "/(.+)",
+        "dest": "public/$1"
       }
     ]
   }
