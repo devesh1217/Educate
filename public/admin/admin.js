@@ -25,7 +25,6 @@ async function getpnd() {
     document.querySelectorAll('.alwd-btn').forEach((curr)=>{
         curr.addEventListener('click',async ()=>{
             let res = await axios.get("/api/user/admin/payment/"+curr.id);
-            console.log(res)
             location.reload();
         })
     })
@@ -46,7 +45,6 @@ async function getalwd() {
     }
 
     for (let i = 1; i <= res.data.length; i++) {
-        console.log(res.data[i - 1].userName);
         let tb = document.createElement("div");
         tb.setAttribute("class", "std-block");
 

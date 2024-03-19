@@ -9,7 +9,6 @@ let chef = false;
 let mathf = false;
 
 
-console.log(chef);
 
 function mkChapterRow(chNum) {
     let chRow = document.createElement("div");
@@ -83,7 +82,6 @@ async function printChapters(subject) {
         }
 
         let chBtn = document.querySelector(`#ch-${i}-name`);
-        console.log(chBtn);
         chBtn.addEventListener("click", () => {
             // console.log(`ch = ${i}`);
             let ch_n_topics = document.querySelector(`#ch-${i}-topics`);
@@ -202,10 +200,8 @@ async function getTest() {
     let res = await axios.post("/api/data/get/test/12-3S1GgXwRi9lzGAKUzGPT309Nroby8g",{id:localStorage.getItem('loginData')});
 
     for (let i = 1; i <= res.data.length; i++) {
-        console.log(res.data[i - 1].name);
         let tb = document.createElement("div");
         tb.setAttribute("class", "test-block");
-        console.log('id: ',res.data[i - 1].id);
         tb.innerHTML = `<div class="test-name">${res.data[i - 1].name}</div>
     <div class="test-start-btn"><button  id="${res.data[i - 1].id}" value="${res.data[i - 1].name}" class="t-btn">Start</button></div>`;
         testClass.appendChild(tb);

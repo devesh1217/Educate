@@ -3,9 +3,7 @@ let test_info = document.querySelector(".test-info");
 
 
 async function getTestData(){
-    console.log('hi')
     let res = await axios.get('/api/data/get/result/'+window.localStorage.getItem('loginData'))
-    console.log('hi',res.data)
     document.getElementById('userName').innerHTML=res.data.userName;
     document.getElementById('email').innerHTML=res.data.email;
     document.getElementById('mobile').innerHTML=res.data.mobile;

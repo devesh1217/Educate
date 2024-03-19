@@ -24,7 +24,6 @@ window.onload = function () {
 async function generateMCQsWithImagesAndOptions(count, subject, testNumber, a) {
     // Add logic to fetch actual questions, images, and options from your database or source
     let data;
-    console.log(localStorage.getItem('testId'))
     await axios
         .get("/api/data/"+localStorage.getItem('testId'))
         .then((doc) => {
@@ -111,10 +110,8 @@ function displayQuestionsWithImagesAndOptions(
 
     document.querySelectorAll('iframe').forEach((curr,indx)=>{
         curr.onloadstart=()=>{
-            console.log('s',indx);
         }
         curr.onloadeddata=()=>{
-            console.log('e',indx);
         }
     })
 }

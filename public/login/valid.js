@@ -10,7 +10,6 @@ const password="123";
 async function login_validate(event) {
     event.preventDefault();  // Prevent default form submission
 
-    console.log("j");
 
     try {
         const login_username = document.querySelector("#input_username").value;
@@ -26,14 +25,11 @@ async function login_validate(event) {
 
         if (res.data.isValid) {
             window.localStorage.setItem("loginData", login_username);
-            console.log("Login successful");
             window.location = "/";
         } else {
             alert('Invalid Id/Password');
-            console.log("Login failed");
         }
 
-        console.log(res.data);
 
 
         return false;
@@ -50,19 +46,16 @@ let ld = document.querySelector(".loader");
 async function otpSend(event){
     event.preventDefault();  // Prevent default form submission
 
-    console.log("j");
     try{
         ld.style.display = "block";
         // let signup_name= document.querySelector("#signup_name").value;
         let signup_email= document.querySelector("#signup_email").value;
         // let signup_mobile_no = document.querySelector("#signup_mobile.no").value;
 
-        console.log("j");
         const res = await axios.post("/api/user/otp/",{email:signup_email});
         ld.style.display = "none";
 
         objRes = res;
-        console.log(res.data);
 
         let optBtn = document.querySelector(".signup_otp_class");
         let signupBtn = document.querySelector("#signup_btn");
@@ -81,7 +74,6 @@ async function otpSend(event){
 async function otpValidate(event){
     event.preventDefault();  // Prevent default form submission
     
-    console.log("h");
     try{
         ld.style.display = "block";
         
@@ -92,7 +84,6 @@ async function otpValidate(event){
             let signup_email= document.querySelector("#signup_email").value;
             let signup_mobile_no = document.querySelector("#signup_mobile_no").value;
             
-            console.log("h");
             
             const res = await axios.post("/api/user/",{userName:signup_name,email:signup_email,mobile:signup_mobile_no});
             ld.style.display = "none";
