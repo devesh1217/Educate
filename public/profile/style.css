@@ -34,7 +34,7 @@ html {
 }
 
 body {
-    background-image: url(../Educate-main/img/new/hero-bg.svg);
+    background-image: url(/Educate-main/img/new/hero-bg.svg);
     background-size: cover;
 }
 

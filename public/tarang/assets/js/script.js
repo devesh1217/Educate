@@ -159,5 +159,5 @@ for (let i = 0; i < navigationLinks.length; i++) {
 }
 
 document.getElementById('home-btn').onclick=()=>{
-  window.location='../';
+  window.location='/';
 }

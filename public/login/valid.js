@@ -27,7 +27,7 @@ async function login_validate(event) {
         if (res.data.isValid) {
             window.localStorage.setItem("loginData", login_username);
             console.log("Login successful");
-            window.location = "../";
+            window.location = "/";
         } else {
             alert('Invalid Id/Password');
             console.log("Login failed");
@@ -102,7 +102,7 @@ async function otpValidate(event){
             optVerify_btn.style.display = "none";
             signupBtn.style.display ="none";
 
-            window.location = "../";
+            window.location = "/";
             
         }
         else {
@@ -125,11 +125,11 @@ let hide=true;
 eye.addEventListener("click",()=>{
     if(hide){
         pass.setAttribute("type","text");
-        eye.setAttribute("src","./img/view.png");
+        eye.setAttribute("src","/img/view.png");
         hide=false;
     }else{
         pass.setAttribute("type","password");
-        eye.setAttribute("src","./img/hide.png");
+        eye.setAttribute("src","/img/hide.png");
         hide=true;
     }
 })

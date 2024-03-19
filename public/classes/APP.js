@@ -225,7 +225,7 @@ async function getTest() {
             // }
             localStorage.setItem('testId',curr.id);
             localStorage.setItem('testName',curr.value);
-            window.location='../test/';
+            window.location='/test/';
         })
     })
 

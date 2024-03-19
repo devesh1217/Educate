@@ -517,7 +517,7 @@ function printGraph() {
 
 
 function returnToMain() {
-    window.location='../classes';
+    window.location='/classes';
 }
 
 // var isSubmit = 'false';

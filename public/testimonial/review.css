@@ -14,7 +14,7 @@ body {
 }
 
 .container {
-    background-image: url(../home/img/new/hero-bg.svg);
+    background-image: url(/home/img/new/hero-bg.svg);
     width: 100%;
     /* height: 100vh; */
     color: white;
